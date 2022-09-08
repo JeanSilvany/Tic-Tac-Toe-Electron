@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { Card } from "./components/Card";
 import { Row } from "./components/Row";
 import { Container, Content, ResetButton, Title } from "./styles";
@@ -9,6 +10,7 @@ const App = () => {
    */
 
   const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [message, setMessage] = useState("");
   const [player, setPlayer] = useState(2);
   const [gameFinished, setGameFinished] = useState(false);
   const [winner, setWinner] = useState(undefined);
@@ -22,10 +24,9 @@ const App = () => {
     [0, 4, 8],
     [2, 4, 6],
   ]);
-  const [message, setMessage] = useState("");
 
   /**
-   * Refs
+   * Callbacks
    */
 
   const changePlayer = () => {
@@ -38,10 +39,6 @@ const App = () => {
       }
     }
   };
-
-  /**
-   * Callbacks
-   */
 
   const checkIfSomeoneWon = () => {
     winningPatterns.forEach((e) => {
